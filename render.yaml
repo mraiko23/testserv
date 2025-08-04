@@ -3,7 +3,7 @@ services:
     name: grow-a-garden-stock-tracker
     env: node
     buildCommand: npm install && npx puppeteer browsers install chrome
-    startCommand: node server.js
+    startCommand: export PATH="$(npx puppeteer browsers resolve chrome --executable-path | xargs dirname):$PATH" && node server.js
     envVars:
       - key: PORT
         value: 3000
